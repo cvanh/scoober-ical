@@ -2,6 +2,8 @@
 require("./scoober-api/index.php");
 require './vendor/autoload.php';
 
+use scoober_api;
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
@@ -40,11 +42,11 @@ $componentFactory = new CalendarFactory();
 $calendarComponent = $componentFactory->createCalendar($calendar);
 
 
-file_put_contents('calendar.ics', (string) $calendarComponent);
+// file_put_contents('calendar.ics', (string) $calendarComponent);
 
 // 4. save 
-// header('Content-Type: text/calendar; charset=utf-8');
-// header('Content-Disposition: attachment; filename="cal.ics"');
+header('Content-Type: text/calendar; charset=utf-8');
+header('Content-Disposition: attachment; filename="cal.ics"');
 
 // // 5. Output
-// echo $calendarComponent;
+echo $calendarComponent;
