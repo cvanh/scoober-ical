@@ -3,7 +3,7 @@ class scoober_api
 {
     private $accestoken;
     private $headers;
-    function _construct($accestoken)
+    function __construct($accestoken)
     {
         // $this->username = $username;
         // $this->password = $password;
