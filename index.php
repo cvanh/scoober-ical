@@ -2,8 +2,6 @@
 require("./scoober-api/index.php");
 require './vendor/autoload.php';
 
-use scoober_api;
-
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
