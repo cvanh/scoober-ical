@@ -1,5 +1,13 @@
+# scoober icall formatter
+
+## todo's
+[] support for multible timezones
+[] 
+
+# note dump
 But I’d advise first to check out the psr-4 for autoloading and namespaces, and how to do requests through a root index 
 
+```
 array(23) {
   ["_id"]=>
   string(24) "61e98f9d5346563417bd1f92"
@@ -47,4 +55,5 @@ array(23) {
   string(24) "2022-01-26T20:56:15.576Z"
   ["subType"]=>
   string(7) "general"
-}# scoober-ical
+}
+```

@@ -4,32 +4,23 @@ require './vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-// use DateInterval;
-// use DateTimeImmutable;
+
 use Eluceo\iCal\Domain\Entity\Calendar;
-use Eluceo\iCal\Domain\Entity\Event;
-use Eluceo\iCal\Domain\ValueObject\Alarm;
-use Eluceo\iCal\Domain\ValueObject\Attachment;
 use Eluceo\iCal\Domain\ValueObject\DateTime;
-use Eluceo\iCal\Domain\ValueObject\EmailAddress;
-use Eluceo\iCal\Domain\ValueObject\GeographicPosition;
-use Eluceo\iCal\Domain\ValueObject\Location;
-use Eluceo\iCal\Domain\ValueObject\Organizer;
 use Eluceo\iCal\Domain\ValueObject\TimeSpan;
-use Eluceo\iCal\Domain\ValueObject\Uri;
 use Eluceo\iCal\Presentation\Factory\CalendarFactory;
-use Generator;
 
-$api = new scoober_api($_ENV["username"], $_ENV["password"]);
-$data = json_decode($api->get_schedule(), true);
-var_dump($data);
+$api = new scoober_api($_ENV["accestoken"]);
+$data = json_decode($api->get_schedule("2000-01-24","2032-01-30"), true);
 
-$calendar = new Calendar();
+$shifts = [];
 
 foreach ($data as $key => $value) {
-    $from = substr($value["fromUnixOffset"], 0, -3);
-    $to = substr($value["toUnixOffset"], 0, -3);
+    // formats the time to Eluceo\iCal specifacations and sets it to the correct timezone(gmt + 1)
+    $from = substr($value["fromUnixOffset"], 0, -3) + 3600;
+    $to = substr($value["toUnixOffset"], 0, -3) + 3600;
 
+    // create a event
     $event = (new Eluceo\iCal\Domain\Entity\Event())
         ->setSummary("werken thuisbezorgd")
         ->setDescription("ingeplanned door: {$value["createdBy"]}")
@@ -37,19 +28,21 @@ foreach ($data as $key => $value) {
             new DateTime(DateTimeImmutable::createFromFormat('U', $from), false),
             new DateTime(DateTimeImmutable::createFromFormat('U', $to), false)
         ));
-    $calendar->addCoamponent($event);
-};
+    // sets all event to an array with all the events
+    $shifts[] = $event;
+}
 
-// 2. Create Calendar domain entity
-// $calendar = new Calendar([$event]);
+// reate Calendar domain entity
+$calendar = new Calendar($shifts);
 
-// 3. Transform domain entity into an iCalendar component
+// Transform domain entity into an iCalendar component
 $componentFactory = new CalendarFactory();
 $calendarComponent = $componentFactory->createCalendar($calendar);
 
 
 file_put_contents('calendar.ics', (string) $calendarComponent);
-// // 4. Set 
+
+// 4. save 
 // header('Content-Type: text/calendar; charset=utf-8');
 // header('Content-Disposition: attachment; filename="cal.ics"');
 
