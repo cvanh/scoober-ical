@@ -16,4 +16,4 @@
 //     return $router->app->version();
 // });
 
-$router->get('/', 'api@get');
+$router->get('/calander/{uid}', 'api@get');

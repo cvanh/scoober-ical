@@ -8,19 +8,12 @@ use Eluceo\iCal\Domain\ValueObject\TimeSpan;
 use Eluceo\iCal\Presentation\Factory\CalendarFactory;
 use DateTimeImmutable;
 
-class Kalender 
+class Planning 
 {
-    private $accestoken;
-    private $api;
-    function __construct($accestoken)
+    function getavailability($uid)
     {
-     $this->accestoken = $accestoken;
-     $this->api = new Scoober($this->accestoken);
-    }
-
-    function getavailability()
-    {
-        $data = json_decode($this->api->get_schedule("2000-01-24", "2032-01-30"), true);
+        $api = new Scoober($uid);
+        $data = json_decode($api->get_schedule("2000-01-24", "2032-01-30"), true);
 
         $shifts = [];
 
