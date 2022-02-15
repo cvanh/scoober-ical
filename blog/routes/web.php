@@ -1,5 +1,4 @@
 <?php
-require_once "../lib/getavailability.php";
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -13,10 +12,8 @@ require_once "../lib/getavailability.php";
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
 
-$router->get('/calander', function () use ($router) {
-    return getavailability("493c74795eb74003a54f8eb7e618f65f08f41a0712b6407f812a4ee79c3af7b5");
-});
+$router->get('/', 'api@get');
