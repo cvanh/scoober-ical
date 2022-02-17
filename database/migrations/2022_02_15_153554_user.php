@@ -18,6 +18,7 @@ class User extends Migration
             $table->string('username');
             $table->string('password');
             $table->string("scoober"); // scoober login token
+            $table->uuid("uid");
         });
     }
 

@@ -29,7 +29,7 @@ class Scoober
 
         $headers = array();
         $headers[] = 'Host: shiftplanning-api.scoober.com';
-        $headers[] = 'Cookie: __cf_bm=UVta3Mc3OgMJzzFqgsnrBHLtuKbmqx7UD59.2m1qj4c-1642805815-0-AXnBSQSeFaY0xspiZ1ZWL0TYUa/vQg9hExC04zAS7c1zl0e0qiirXvDKgSK1Nf3StBW3Np3lKaDiGeaDjvq0tfApvSwRSgCJA1i+SSONmppC';
+        // $headers[] = 'Cookie: __cf_bm=UVta3Mc3OgMJzzFqgsnrBHLtuKbmqx7UD59.2m1qj4c-1642805815-0-AXnBSQSeFaY0xspiZ1ZWL0TYUa/vQg9hExC04zAS7c1zl0e0qiirXvDKgSK1Nf3StBW3Np3lKaDiGeaDjvq0tfApvSwRSgCJA1i+SSONmppC';
         $headers[] = 'Accept: */*';
         $headers[] = 'Content-Type: application/json';
         $headers[] = 'Accept-Language: en-NL;q=1.0, nl-NL;q=0.9, de-NL;q=0.8, ru-NL;q=0.7';

@@ -12,8 +12,12 @@
 |
 */
 
-// $router->get('/', function () use ($router) {
-//     return $router->app->version();
-// });
+$router->get('/', function () use ($router) {
+    return "laas";
+});
 
-$router->get('/calander/{uid}', 'api@get');
+$router->get('/test', function () use ($router) {
+    return $_ENV;
+});
+
+$router->get('/calander/{uid}', 'Api@getschedule');

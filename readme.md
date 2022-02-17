@@ -1,0 +1,1 @@
+INSERT INTO `user` (`id`, `username`, `password`, `scoober`, `uid`) VALUES (NULL, 'test', 'test', '493c74795eb74003a54f8eb7e618f65f08f41a0712b6407f812a4ee79c3af7b5', '96e85204-8f4c-11ec-a1d2-0e1024832941'); 
