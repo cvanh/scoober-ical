@@ -16,8 +16,7 @@ class User extends Migration
         Schema::create('user', function (Blueprint $table) {
             $table->id();
             $table->text('email');
-            // $table->string('password');
-            $table->string('discord_token');
+            $table->string('password');
             $table->text("scoober"); // scoober login token
             $table->uuid("uid");
         });

@@ -76,7 +76,7 @@ class Scoober
     /**
      * gets a acces token via email and password combo
      *
-     * @return void
+     * @return string
      */
     public function get_accestoken($username, $password)
     {

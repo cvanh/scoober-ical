@@ -29,14 +29,16 @@ class Api extends Controller
     function login(Request $request)
     {
         $user = DB::table("user")->where("email", $request->input("email"))->first();
-        var_dump($user);
+        // var_dump($user);
+        file_put_contents("php://stdout",    $request->email);
+        file_put_contents("php://stdout", $request->password);
         if (!$user) {
-            $data = $request->all();
-            $scoober_token = (new Cvanh\Scoober(""))->get_accestoken($data["email"],$data["password"]);
+            $scoober_token = json_decode((new Cvanh\Scoober(""))->get_accestoken($request->email, $request->password));
             $uuid = Uuid::v4();
-            DB::insert("INSERT INTO user (id, email, discord_token, scoober, uid) VALUES (NULL, '{$data["email"]}', '{$data["discord_token"]}', '{$scoober_token->accessToken}', '{$uuid}')");
-            return $uuid;
+            DB::insert("INSERT INTO user (id, email,password , scoober, uid) VALUES (NULL, '{$request->email}','{$request->password}}', '{$scoober_token->body->accessToken}', '{$uuid}')");
+            echo $scoober_token->body->accessToken;
+        } else {
+            echo json_encode($user);
         }
-        echo "kaas";
     }
 }
