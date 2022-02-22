@@ -21,3 +21,7 @@ $router->get('/test', function () use ($router) {
 });
 
 $router->get('/calander/{uid}', 'Api@getschedule');
+
+$router->post('/getuid', 'Api@getuid');
+
+$router->post('/login', 'Api@login');

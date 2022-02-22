@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee3194dcb5234bff86b4b25d9851fc31",
+    "content-hash": "a6abf7c72a8491a603387ae95e7309d0",
     "packages": [
         {
             "name": "brick/math",
@@ -1924,6 +1924,43 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2022-02-02T21:02:36+00:00"
+        },
+        {
+            "name": "jchook/uuid",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jchook/uuid-v4.git",
+                "reference": "44dd5cd5e824ef89eec15c9d83a3fe13197c727b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jchook/uuid-v4/zipball/44dd5cd5e824ef89eec15c9d83a3fe13197c727b",
+                "reference": "44dd5cd5e824ef89eec15c9d83a3fe13197c727b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/Uuid.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wes Roberts",
+                    "email": "9p3g@a.zinc.email"
+                }
+            ],
+            "description": "Fast, Secure UUIDs",
+            "support": {
+                "issues": "https://github.com/jchook/uuid-v4/issues",
+                "source": "https://github.com/jchook/uuid-v4/tree/master"
+            },
+            "time": "2018-04-09T03:46:30+00:00"
         },
         {
             "name": "laravel/lumen-framework",

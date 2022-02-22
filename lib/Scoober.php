@@ -1,4 +1,5 @@
 <?php
+
 namespace Cvanh;
 
 class Scoober
@@ -77,7 +78,7 @@ class Scoober
      *
      * @return void
      */
-    public function get_accestoken($username,$password)
+    public function get_accestoken($username, $password)
     {
         if ($this->accestoken) {
             return $this->accestoken;
@@ -90,7 +91,14 @@ class Scoober
             curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"password\":\"{$password}\",\"userName\":\"{$username}\"}");
             curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
 
-            // $headers = $this->get_headers();
+            $headers = array();
+            $headers[] = 'Host: api.scoober.com';
+            $headers[] = 'Cookie: __cf_bm=kKR7Qk6mspv6zlD8d9oROBt3wmSabsNSH1fmwgIZM38-1642290080-0-AQ90SDeLW4vTfWQ4/rfQRJLF5MNkerID18MRAs++qqtaMRCrzrzF7Tp7Eqir2rY8p+rmowsVEV+NNaeR05I1nzhbXoPVHocIytTRaePL9Bi/';
+            $headers[] = 'Accept: */*';
+            $headers[] = 'Content-Type: application/json';
+            $headers[] = 'Agent: ios-app-v2.17.0';
+            $headers[] = 'User-Agent: Scoober/2.17.0 (com.takeaway.scoober; build:20211103.121233; iOS 15.2.1) Alamofire/5.4.3';
+            $headers[] = 'Accept-Language: en-NL;q=1.0, nl-NL;q=0.9, de-NL;q=0.8, ru-NL;q=0.7';
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             $result = curl_exec($ch);
