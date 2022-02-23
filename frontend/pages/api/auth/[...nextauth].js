@@ -1,7 +1,4 @@
 import NextAuth from "next-auth";
-import Scoober from "../../../src/scooberprovider";
-import GoogleProvider from "next-auth/providers/google";
-import EmailProvider from "next-auth/providers/email";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
@@ -34,13 +31,17 @@ export default NextAuth({
         })
           .then(response => response.json())
           .then(data => {
-            console.log(data.uid)
-            userdata.uid = data.uid
+
+            console.log(data)
+            userdata.name = data.uid
             userdata.email = data.email
           });
-          console.log(userdata);
 
-        return userdata;
+        if(userdata){
+          return userdata;
+        }else{
+          return null
+        }
       },
     }),
   ],
