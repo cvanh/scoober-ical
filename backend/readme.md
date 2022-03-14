@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # backend 
 
 ## requirements
@@ -17,3 +18,4 @@ assuming the php.ini file is properly set up(curl extension enabled)
 
 
 a 
+
