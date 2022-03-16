@@ -23,7 +23,7 @@ export default NextAuth({
           method: "POST",
           body: JSON.stringify({
             email: credentials.username,
-            password: credentials.password,
+            password: credentials.password
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",

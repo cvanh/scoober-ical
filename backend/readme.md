@@ -14,7 +14,7 @@ assuming the php.ini file is properly set up(curl extension enabled)
 ### production
 assuming the php.ini file is properly set up(curl extension enabled)
 1 ```composer install```
-2 serve /backend/public/index.php
+2 serve /backend/public/index.php to your users
 
 
 a 
