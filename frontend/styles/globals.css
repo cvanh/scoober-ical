@@ -24,3 +24,10 @@ button{
   background-color: orange;
   border: none;
 }
+
+.button{
+  width: 30%;
+  height: 20px;
+  background-color: orange;
+  border: none;
+}

@@ -28,20 +28,25 @@ class Api extends Controller
     }
     function login(Request $request)
     {
-        $user = DB::table("user")->where("email", $request->input("email"))->first();
+        $user = DB::table("user")
+            ->where("email", $request->input("email"))
+            ->orWhere("password",$request->input("password")) 
+            ->first();
+
         if (!$user) {
             $scoober_token = json_decode((new Cvanh\Scoober(""))->get_accestoken($request->email, $request->password));
+
             if($scoober_token->body->accessToken){
-            
-            $uuid = Uuid::v4();
+            $uuid = Uuid::v4(); // for later use
             DB::insert("INSERT INTO user (id, email,password , scoober, uid) VALUES (NULL, '{$request->email}','{$request->password}}', '{$scoober_token->body->accessToken}', '{$uuid}')");
             
+            // send data so the new user login doesnt fail 
             $data = [];
-            $data["uid"] = $scoober_token->body->accessToken;
+            $data["uid"] = $uuid;
             $data["email"] = $request->email;
-            echo $data;
+            echo json_encode($data);
             } else{
-                echo json_encode("failed");
+                echo "failed";
             }
         } else {
             echo json_encode($user);

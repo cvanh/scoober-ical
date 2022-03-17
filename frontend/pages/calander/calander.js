@@ -1,23 +1,20 @@
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
+import Link from "next/link";
+import GetbackendUrl from "../../lib/getbackendurl";
 
-function Calander(props){
+function Calander(){
     const { data: session } = useSession();
-    
-    // TODO process the uid from the jwt correctly
-    // console.log(session.user.name);
-    const icalurl = 'http://localhost:3000/calander/' + ((session === undefined) ? "session.name" : session.name)
-    // const icalurl = `${process.env.BACKENDURL}/calander/USERFIXME` 
+    const icalurl = `${GetbackendUrl()}/calander/${session?.user?.name}`
     return(
         <div>
+            <div className="button">
+            <Link href="/">fuck go back</Link>
+            </div>
             your ical link is: 
-            {/* <pre>{icalurl}</pre> */}
-            {/* <a href={`webcal://${icalurl}`}>zooi</a> */}
+            <pre>{icalurl}</pre>
+            <a href={icalurl}>Get your url here</a>
         </div>
     )
-}
-
-Calander.getInitialProps = ({req, res}) => {
-
 }
 
 export default Calander;

@@ -11,11 +11,8 @@ export function Loggedin(props) {
       <br />
       <button className={style.button} onClick={() => signOut()}>Sign out</button>
       <div>
-        <Link passHref="/calander">
+        <Link href="/calander">
           <h1>create agenda feed</h1>
-        </Link>
-        <Link passHref="/test">
-          <h1>testing page</h1>
         </Link>
         
       </div>
